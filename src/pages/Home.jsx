@@ -123,18 +123,19 @@ You can download it and open with an appropriate application.`
     }, [files]);
 
     return (
-        <div className="font-inter p-6 h-screen overflow-y-hidden"
+        <div className="font-inter p-2 xl:p-6 h-screen overflow-y-hidden"
             onDragOver={files.length > 0 ? (e) => e.preventDefault() : null}
             onDrop={files.length > 0 ? handleDrop : null}
         >
             <div className='h-28 flex justify-between items-center '>
-                <h1 className="text-light text-8xl tracking-tight">All Files Viewer</h1>
+                <h1 className="text-light text-4xl xl:text-8xl tracking-tight">All Files Viewer</h1>
                 {files.length > 0 &&
                     <button
                         onClick={openUploadDialog}
-                        className='bg-light h-16 w-40 mr-4 cursor-pointer text-dark flex items-center gap-2 group justify-center transition-all duration-300'
+                        className='bg-light h-10  xl:h-16 xl:w-40 xl:mr-4 cursor-pointer text-dark flex items-center gap-2 group justify-center transition-all duration-300'
                     >
-                        <span className='translate-x-3 group-hover:translate-x-0 duration-300 transition-all'>Upload more</span>
+                        <span className='translate-x-3 hidden xl:block group-hover:translate-x-0 duration-300 transition-all'>Upload more</span>
+                        <span className='translate-x-3 xl:hidden block group-hover:translate-x-0 duration-300 transition-all'>Upload</span>
                         <TfiUpload
                             className='opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300'
                         />
@@ -145,14 +146,14 @@ You can download it and open with an appropriate application.`
 
             <input type="file" multiple ref={fileInputRef} className="hidden" onChange={handleUpload} />
 
-            <div className="flex h-[calc(100%-7rem)] w-full space-x-4">
+            <div className=" xl:flex h-[calc(100%-7rem)] w-full xl:space-x-4">
                 <div className='w-full'>
                     {selectedFile ? (
                         <div ref={previewRef} className='w-full border border-light h-full p-4 pt-0 overflow-y-auto'>
-                            <div className='justify-between flex items-center sticky top-0 bg-dark py-4 pb-2 z-40 h-20'>
-                                <h2 className="text-light text-xl  tracking-wide  mb-4">{selectedFile.name}</h2>
+                            <div className='justify-between flex items-center sticky top-0 bg-dark py-4 pb-2 z-40 xl:h-20'>
+                                <h2 className="text-light text-sm xl:text-xl  tracking-wide  mb-4">{selectedFile.name}</h2>
                                 <button
-                                    className='bg-light flex items-center gap-2 w-32 h-12 justify-center cursor-pointer group transition-all duration-300'
+                                    className='bg-light xl:flex items-center hidden gap-2 w-32 h-12 justify-center cursor-pointer group transition-all duration-300'
                                     onClick={toggleFullScreen}
                                 >
                                     <span className='translate-x-3 group-hover:translate-x-0 duration-300 transition-all'>{isFullscreen ? "Exit Full Screen" : "Full Screen"}</span>
@@ -185,7 +186,7 @@ You can download it and open with an appropriate application.`
                         </div>
                     ) : (
                         <div
-                            className={`border w-full border-dashed border-light h-full flex justify-center items-center transition 
+                            className={`border w-full border-dashed border-light min-h-80 xl:h-full flex justify-center items-center transition 
         ${isDragging ? "bg-white text-dark" : ""}`}
                             onDragOver={(e) => {
                                 e.preventDefault();
@@ -199,7 +200,7 @@ You can download it and open with an appropriate application.`
                             onClick={openUploadDialog}
                         >
                             <div>
-                                <h2 className={`text-2xl font-light tracking-tight 
+                                <h2 className={`text-lg xl:text-2xl font-light tracking-tight 
             ${isDragging ? "text-dark" : "text-light"}`}>
                                     Drag & Drop the File(s) to preview
                                 </h2>
@@ -208,14 +209,14 @@ You can download it and open with an appropriate application.`
                     )}
                 </div>
 
-                <div className="max-w-72">
+                <div className="xl:max-w-72 mt-4">
                     {files.length > 1 && (
-                        <div className="flex flex-col gap-4 overflow-y-auto h-full pr-4">
+                        <div className="flex xl:flex-col gap-4  xl:overflow-y-auto h-full pr-4">
                             {files.map((file, idx) => (
                                 <div
                                     key={idx}
                                     onClick={() => toggleSelectedFile(file)}
-                                    className={`p-4 border border-light rounded-lg hover:bg-white/5 hover:text-light transition cursor-pointer min-h-52 flex flex-col justify-center items-center ${selectedFile && selectedFile.name === file.name ? "bg-white text-dark" : "text-light"
+                                    className={`p-4 border border-light rounded-lg hover:bg-white/5 hover:text-light transition cursor-pointer min-h-52 flex flex-col xl:justify-center items-center ${selectedFile && selectedFile.name === file.name ? "bg-white text-dark" : "text-light"
                                         }`}
                                 >
                                     <div className="text-4xl font-bold uppercase">{getExtension(file.name)}</div>

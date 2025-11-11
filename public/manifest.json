@@ -10,45 +10,45 @@
     "orientation": "any",
     "icons": [
         {
-            "src": "/favicon16.png",
+            "src": "favicon16.png",
             "sizes": "16x16",
             "type": "image/png"
         },
         {
-            "src": "/favicon32.png",
+            "src": "favicon32.png",
             "sizes": "32x32",
             "type": "image/png"
         },
         {
-            "src": "/favicon48.png",
+            "src": "favicon48.png",
             "sizes": "48x48",
             "type": "image/png"
         },
         {
-            "src": "/favicon96.png",
+            "src": "favicon96.png",
             "sizes": "96x96",
             "type": "image/png"
         },
         {
-            "src": "/favicon180.png",
+            "src": "favicon180.png",
             "sizes": "180x180",
             "type": "image/png",
             "purpose": "any"
         },
         {
-            "src": "/favicon192.png",
+            "src": "favicon192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any"
         },
         {
-            "src": "/favicon256.png",
+            "src": "favicon256.png",
             "sizes": "256x256",
             "type": "image/png",
             "purpose": "any"
         },
         {
-            "src": "/favicon512.png",
+            "src": "favicon512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"

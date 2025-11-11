@@ -123,7 +123,7 @@ You can download it and open with an appropriate application.`
     }, [files]);
 
     return (
-        <div className="font-inter p-2 xl:p-6 h-screen overflow-y-hidden"
+        <div className="font-inter p-2 xl:p-6 xl:h-screen xl:overflow-y-hidden"
             onDragOver={files.length > 0 ? (e) => e.preventDefault() : null}
             onDrop={files.length > 0 ? handleDrop : null}
         >
@@ -147,11 +147,11 @@ You can download it and open with an appropriate application.`
             <input type="file" multiple ref={fileInputRef} className="hidden" onChange={handleUpload} />
 
             <div className=" xl:flex h-[calc(100%-7rem)] w-full xl:space-x-4">
-                <div className='w-full'>
+                <div className='w-full transition-all duration-300'>
                     {selectedFile ? (
-                        <div ref={previewRef} className='w-full border border-light h-full p-4 pt-0 overflow-y-auto'>
+                        <div ref={previewRef} className='w-full transition-all duration-300 border border-light h-full p-4 pt-0 overflow-y-auto'>
                             <div className='justify-between flex items-center sticky top-0 bg-dark py-4 pb-2 z-40 xl:h-20'>
-                                <h2 className="text-light text-sm xl:text-xl  tracking-wide  mb-4">{selectedFile.name}</h2>
+                                <h2 className="text-light truncate text-sm xl:text-xl  tracking-wide  mb-4">{selectedFile.name}</h2>
                                 <button
                                     className='bg-light xl:flex items-center hidden gap-2 w-32 h-12 justify-center cursor-pointer group transition-all duration-300'
                                     onClick={toggleFullScreen}
@@ -209,18 +209,18 @@ You can download it and open with an appropriate application.`
                     )}
                 </div>
 
-                <div className="xl:max-w-72 mt-4">
+                <div className="xl:max-w-72 mt-4 xl:mt-0 overflow-x-auto">
                     {files.length > 1 && (
-                        <div className="flex xl:flex-col gap-4  xl:overflow-y-auto h-full pr-4">
+                        <div className="flex xl:flex-col gap-2 xl:gap-4  xl:overflow-y-auto h-full pr-4">
                             {files.map((file, idx) => (
                                 <div
                                     key={idx}
                                     onClick={() => toggleSelectedFile(file)}
-                                    className={`p-4 border border-light rounded-lg hover:bg-white/5 hover:text-light transition cursor-pointer min-h-52 flex flex-col xl:justify-center items-center ${selectedFile && selectedFile.name === file.name ? "bg-white text-dark" : "text-light"
+                                    className={`p-4 border border-light rounded-lg hover:bg-white/5 hover:text-light transition cursor-pointer xl:min-h-52 flex flex-col xl:justify-center items-center xl:items-start xl:overflow-x-hidden ${selectedFile && selectedFile.name === file.name ? "bg-white text-dark" : "text-light"
                                         }`}
                                 >
-                                    <div className="text-4xl font-bold uppercase">{getExtension(file.name)}</div>
-                                    <p className="text-sm text-center truncate overflow-x-hidden max-w-60 text-wrap mt-2">{file.name}</p>
+                                    <div className="text-4xl xl:mx-auto font-bold uppercase">{getExtension(file.name)}</div>
+                                    <p className="xl:block hidden text-sm text-center truncate overflow-x-hidden max-w-60 text-wrap mt-2 ">{file.name}</p>
                                 </div>
                             ))}
                         </div>

@@ -3,5 +3,6 @@
 // export { default as SampleText} from './global/SampleText.jsx' 
 export { default as Home} from './Home.jsx' 
 export { default as Resize} from './Resize.jsx' 
+export { default as Page404} from './404.jsx'
 
 // Have a nice Day !

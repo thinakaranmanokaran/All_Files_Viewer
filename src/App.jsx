@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home, Resize } from "./pages";
+import { Home, Page404, Resize } from "./pages";
 
 const App = () => {
     return (
@@ -8,6 +8,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/resize" element={<Resize />} />
+                <Route path="*" element={<Page404 />} />
             </Routes>
         </BrowserRouter>
     );

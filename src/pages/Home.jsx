@@ -3,6 +3,7 @@ import mammoth from "mammoth";
 import * as XLSX from "xlsx";
 import { renderAsync } from "docx-preview";
 import { TfiUpload, TfiFullscreen } from "react-icons/tfi";
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -15,6 +16,7 @@ const Home = () => {
     const previewRef = useRef(null);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [isDragging, setIsDragging] = useState(false);
+    const [menu, setMenu] = useState(false);
 
     const getExtension = (name) => name.split('.').pop().toLowerCase();
 
@@ -27,6 +29,10 @@ const Home = () => {
             setIsFullscreen(false);
         }
     };
+
+    function handleMenu() {
+        setMenu(!menu);
+    }
 
     const handleDrop = (e) => {
         e.preventDefault();
@@ -127,20 +133,39 @@ You can download it and open with an appropriate application.`
             onDragOver={files.length > 0 ? (e) => e.preventDefault() : null}
             onDrop={files.length > 0 ? handleDrop : null}
         >
-            <div className='h-28 flex justify-between items-center '>
-                <h1 className="text-light text-4xl xl:text-8xl tracking-tight">All Files Viewer</h1>
-                {files.length > 0 &&
-                    <button
-                        onClick={openUploadDialog}
-                        className='bg-light h-10  xl:h-16 xl:w-40 xl:mr-4 cursor-pointer text-dark flex items-center gap-2 group justify-center transition-all duration-300'
-                    >
-                        <span className='translate-x-3 hidden xl:block group-hover:translate-x-0 duration-300 transition-all'>Upload more</span>
-                        <span className='translate-x-3 xl:hidden block group-hover:translate-x-0 duration-300 transition-all'>Upload</span>
-                        <TfiUpload
-                            className='opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300'
-                        />
-                    </button>
+            <div className="">
+                <div className='h-28 flex justify-between items-center '>
+                    <h1 className="text-light text-4xl xl:text-8xl tracking-tight">All Files Viewer</h1>
+                    <div className=' flex justify-center items-center'>
+                        {files.length > 0 &&
+                            <button
+                                onClick={openUploadDialog}
+                                className='bg-light h-10  xl:h-16 xl:w-40 xl:mr-4 cursor-pointer text-dark flex items-center gap-2 group justify-center transition-all duration-300'
+                            >
+                                <span className='translate-x-3 hidden xl:block group-hover:translate-x-0 duration-300 transition-all'>Upload more</span>
+                                <span className='translate-x-3 xl:hidden block group-hover:translate-x-0 duration-300 transition-all'>Upload</span>
+                                <TfiUpload
+                                    className='opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300'
+                                />
+                            </button>
 
+                        }
+                        <button onClick={handleMenu} className={` h-20 w-20 mr-4 hover:bg-light/10 items-center  flex flex-col justify-center space-y-3 transition-all duration-300 cursor-pointer ${menu ? "pt-4" : ""} `}>
+                            <div className={`h-1 w-16 bg-light transition-all duration-300 ${menu ? " rotate-45" : "rotate-0"}`}></div>
+                            <div className={`h-1 w-16 bg-light transition-all duration-300 ${menu ? " -translate-y-4 -rotate-45" : "rotate-0"}`}></div>
+                        </button>
+                    </div>
+                </div>
+                {
+                    menu &&
+                    <nav className='text-light hidden  text-6xl font-light md:flex justify-end mr-8  mb-8 '>
+                        <ul className='flex flex-col items-end'>
+                            <Link to="/resize" className='text-light/30 hover:text-light cursor-pointer transition-colors duration-300' >Resize</Link>
+                            {/* <Link className='text-light/30 hover:text-light cursor-pointer transition-colors duration-300' >Resize</Link>
+                            <Link className='text-light/30 hover:text-light cursor-pointer transition-colors duration-300' >Resize</Link>
+                            <Link className='text-light/30 hover:text-light cursor-pointer transition-colors duration-300' >Resize</Link> */}
+                        </ul>
+                    </nav>
                 }
             </div>
 
